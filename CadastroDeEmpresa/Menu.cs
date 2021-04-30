@@ -14,18 +14,42 @@ namespace CadastroDeEmpresa {
 
             do {
                 Console.WriteLine("Menu-------------------\n1- Cadastra empresa;");
-                Console.WriteLine("2- Editar receita;\n3- Ajuda;\n4- Sair;");
+                Console.WriteLine("2- Exibir;\n3- Ajuda;\n4- Sair;");
                 Console.Write("Opção desejada: ");
                 Op = int.Parse(Console.ReadLine());
 
                 switch (Op) {
                     case 1:
-                        EfetuarCadastro();
-                        //list.Add();
+                        Random rand = new Random();
+
+                        int id = rand.Next(100, 999);
+                        string nome;
+                        double receita;
+
+                        Console.WriteLine($"Id gerado: {id}");
+                        Console.Write("Escreva o nome da empresa: ");
+                        nome = Console.ReadLine();
+
+                        Console.Write("Escreva o valor de receita: R$ ");
+                        receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        emp.Add(new Empresa(id, nome, receita));
+
+                        Console.WriteLine("Cadastro efetuado com sucesso;\n");
+
                         break;
+
                     case 2:
-                        //vou repensar nisso;
+                        Console.Write("Id para se efetuar as buscas: ");
+                        int find = int.Parse(Console.ReadLine());
+
+                        foreach(var empresa in emp) {
+                            if(empresa.Id == find) {
+                                Console.WriteLine($"Id: {empresa.Id}\nNome: {empresa.Nome}\nReceita:{empresa.Receita}");
+                            }
+                        }                 
                         break;
+
                     case 3:
                         MenuHelp();
                         break;                               
@@ -51,18 +75,6 @@ namespace CadastroDeEmpresa {
             return;
         }
 
-        public void EfetuarCadastro() {
-            string nome;
-            double receita;
-            Console.Write("Escreva o nome da empresa: ");
-            nome = Console.ReadLine();
-
-            Console.Write("Escreva o valor de receita: R$ ");
-            receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-            Console.WriteLine("Cadastro efetuado com sucesso;\n");
-
-            return;
-        }
+        
     }
 }
