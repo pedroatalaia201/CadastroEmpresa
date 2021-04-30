@@ -1,16 +1,16 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 
 namespace CadastroDeEmpresa {
     public class Menu {
         public int Op;
-        //public List<int> list = new List<int>();
      
         public Menu() {
         }
 
         public void MenuScreen() {
-            Empresa empresa = new Empresa();
+            List<Empresa> emp = new List<Empresa>();
 
             do {
                 Console.WriteLine("Menu-------------------\n1- Cadastra empresa;");
@@ -20,11 +20,11 @@ namespace CadastroDeEmpresa {
 
                 switch (Op) {
                     case 1:
-                        empresa.EfetuarCadastro();
+                        EfetuarCadastro();
                         //list.Add();
                         break;
                     case 2:
-                        Console.WriteLine(empresa);
+                        //vou repensar nisso;
                         break;
                     case 3:
                         MenuHelp();
@@ -51,7 +51,16 @@ namespace CadastroDeEmpresa {
             return;
         }
 
-        public void AddToList() {
+        public void EfetuarCadastro() {
+            string nome;
+            double receita;
+            Console.Write("Escreva o nome da empresa: ");
+            nome = Console.ReadLine();
+
+            Console.Write("Escreva o valor de receita: R$ ");
+            receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+            Console.WriteLine("Cadastro efetuado com sucesso;\n");
 
             return;
         }
