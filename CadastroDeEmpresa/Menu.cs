@@ -5,13 +5,14 @@ using System.Collections.Generic;
 namespace CadastroDeEmpresa {
     public class Menu {
         public int Op;
+        public List<Empresa> Empresas { get; set; } = new List<Empresa>();
      
         public Menu() {
         }
 
         public void MenuScreen() {
             List<Empresa> emp = new List<Empresa>();
-
+            //passar para o Program.cs ->
             do {
                 Console.WriteLine("Menu-------------------\n1- Cadastra empresa;");
                 Console.WriteLine("2- Exibir;\n3- Ajuda;\n4- Sair;");
