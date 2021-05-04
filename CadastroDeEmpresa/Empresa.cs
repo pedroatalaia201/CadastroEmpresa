@@ -11,7 +11,5 @@ namespace CadastroDeEmpresa {
             Nome = nome;
             Receita = receita;
         }         
-
-
     }
 }
