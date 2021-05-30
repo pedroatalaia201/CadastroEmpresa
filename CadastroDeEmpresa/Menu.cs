@@ -9,6 +9,14 @@ namespace CadastroDeEmpresa {
         public Menu() {
         }
 
+        public void AddEmpresa(Empresa empresa) {
+            Empresas.Add(empresa);
+        }
+
+        public void RemoveEmpresa(Empresa empresa) {
+            Empresas.Remove(empresa);
+        }
+
         public void FindEmpresa() {
             bool Finded = false;
             Console.WriteLine("Digite o Id e o Nome da sua empresa");

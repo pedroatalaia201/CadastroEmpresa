@@ -36,7 +36,10 @@ namespace CadastroDeEmpresa {
                         nome = Console.ReadLine();
 
                         Console.Write("Escreva o valor de receita: R$ ");
-                        receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);                       
+                        receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+
+                        Empresa empresa = new Empresa(id, nome, receita);
+                        MenuScreen.AddEmpresa(empresa);
 
                         Console.WriteLine("Cadastro efetuado com sucesso;\n");
 
