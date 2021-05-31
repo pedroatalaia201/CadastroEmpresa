@@ -2,8 +2,7 @@
 using System.Globalization;
 
 namespace CadastroDeEmpresa {
-    class Program {
-        static public Menu MenuScreen { get; set; }
+    class Program {       
         static public int Op;
 
         static void Main(string[] args) {
@@ -22,9 +21,10 @@ namespace CadastroDeEmpresa {
                 Console.Write("Opção desejada: ");
                 Op = int.Parse(Console.ReadLine());
 
+                Menu MenuScreen = new Menu();
+
                 switch (Op) {
-                    case 1:
-                        //preciso cria um método para isso...
+                    case 1:                      
                         Random rand = new Random();
 
                         int id = rand.Next(100, 999);
@@ -37,9 +37,9 @@ namespace CadastroDeEmpresa {
 
                         Console.Write("Escreva o valor de receita: R$ ");
                         receita = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
-                        Empresa empresa = new Empresa(id, nome, receita);
-                        MenuScreen.AddEmpresa(empresa);
+                       
+                        
+                        MenuScreen.AddEmpresa(id, nome, receita);
 
                         Console.WriteLine("Cadastro efetuado com sucesso;\n");
 
@@ -47,6 +47,7 @@ namespace CadastroDeEmpresa {
 
                     case 2:
                         MenuScreen.FindEmpresa();
+                   
                         break;
 
                     case 3:

@@ -15,6 +15,12 @@ namespace CadastroDeEmpresa {
             Receita = receita;
         }         
 
+        public void AddLucro(double quantia) {
+            Receita += quantia;
+        }
 
+        public void AddDespesa(double quantia) {
+            Receita -= quantia;            
+        }
     }
 }

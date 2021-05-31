@@ -9,11 +9,13 @@ namespace CadastroDeEmpresa {
         public Menu() {
         }
 
-        public void AddEmpresa(Empresa empresa) {
+        public void AddEmpresa(int id,string  nome,double receita) {
+            Empresa empresa = new Empresa(id, nome, receita);
             Empresas.Add(empresa);
         }
 
-        public void RemoveEmpresa(Empresa empresa) {
+        public void RemoveEmpresa(int id, string nome, double receita) {
+            Empresa empresa = new Empresa(id, nome, receita);
             Empresas.Remove(empresa);
         }
 
@@ -30,14 +32,35 @@ namespace CadastroDeEmpresa {
             foreach(Empresa empresa in Empresas) {
                 if(empresa.Id == find && empresa.Nome == nome) {
                     Finded = true;
-                    //criar método ou um novo menu?
+                    EditarReceita(find, nome);
+                    return;
+                }               
+            }
+            Console.WriteLine("Empresa não enconttrada.");         
+        }  
+        
+        public void EditarReceita(int id, string nome) {
+            Console.WriteLine("Você deseja:\n1- Adicionar Lucro;\n2- Adicionar Despeza;");
+            int op = int.Parse(Console.ReadLine());
+
+            Console.Write("Qual a quantia? R$");
+            double quantia = double.Parse(Console.ReadLine());
+
+            if (op == 1) {
+                foreach(Empresa item in Empresas) {
+                    if (item.Id == id && item.Nome == nome) {
+                        item.AddLucro(quantia);
+                    }
                 }
             }
-            if(Finded != true) {
-                Console.WriteLine("Empresa não encontrada.");
-                return;
+            else {
+                foreach (Empresa item in Empresas) {
+                    if (item.Id == id && item.Nome == nome) {
+                        item.AddDespesa(quantia);
+                    }
+                }
             }
-        }      
+        }
 
         public void MenuHelp() {
             Console.WriteLine("\nHelp-----------------");
@@ -50,7 +73,5 @@ namespace CadastroDeEmpresa {
             
             return;
         }
-
-        
     }
 }
